@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-course-project';
+  url: string = 'recipes'
+
+  onNavigate(url: string) {
+    this.url = url;
+  }
 }
