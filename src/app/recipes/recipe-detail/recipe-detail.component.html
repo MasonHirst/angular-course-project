@@ -1,7 +1,12 @@
 <div *ngIf="currentRecipe; else noRecipeMessage">
   <div class="row">
     <div class="col-xs-12">
-      <img [src]="currentRecipe.imagePath" alt="" class="img-responsive" style="max-width: 300px; max-height: 300px;" />
+      <img
+        [src]="currentRecipe.imagePath"
+        alt=""
+        class="img-responsive"
+        style="max-width: 300px; max-height: 300px"
+      />
     </div>
   </div>
   <div class="row">
@@ -11,12 +16,12 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <div class="btn-group">
+      <div appDropdown class="btn-group">
         <button type="button" class="btn btn-primary dropdown-toggle">
           Manage Recipe <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href="#">To Shopping List</a></li>
+          <li><a (click)="onAddRecipeIngredients()" style="cursor: pointer;">To Shopping List</a></li>
           <li><a href="#">Edit Recipe</a></li>
           <li><a href="#">Delete Recipe</a></li>
         </ul>
@@ -31,7 +36,13 @@
   </div>
 
   <div class="row">
-    <div class="xol-xs 12">Ingredients</div>
+    <div class="xol-xs 12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let ing of currentRecipe.ingredients">
+          {{ ing.name }} - {{ ing.amount }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
